@@ -1,6 +1,12 @@
-'''
-Implementation of chain matrix multiplication using dynamic programming.
-'''
+{
+    "Author": "Fenil Gandhi",
+    "Version": "Python 3.6.2",
+    "Description": "Implementation of chain matrix multiplication using dynamic programming",
+    "Input Parameters": "List of dimensions of the matrices",
+    "Input": [5, 10, 20, 30],
+    "Output": "Mininum Steps to multiply [5, 10, 20, 30] will be 4000 steps",
+}
+
 import sys
 
 values = {}

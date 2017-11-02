@@ -1,6 +1,22 @@
-'''
-Implement Kruskal’s algorithm
-'''
+{
+    "Author": "Fenil Gandhi",
+    "Version": "Python 3.6.2",
+    "Description": "Implement Kruskal’s algorithm",
+    "Input Parameters": "Graph Object constructed using each edge",
+    "Input": {
+        (0, 1): 7,
+        (0, 3): 8,
+        (1, 2): 6,
+        (1, 3): 3,
+        (2, 3): 4,
+        (2, 4): 2,
+        (2, 5): 5,
+        (3, 4): 3,
+        (4, 5): 2,
+    },
+    "Output": "Using Krushkal's Algorithm, we get MST having 17 units weight of edges [(2, 4), (4, 5), (1, 3), (3, 4), (0, 1)]",
+
+}
 
 
 class Graph():

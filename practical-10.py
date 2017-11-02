@@ -1,6 +1,22 @@
-'''
-Implement prim’s algorithm
-'''
+{
+    "Author": "Fenil Gandhi",
+    "Version": "Python 3.6.2",
+    "Description": "Implement prim’s algorithm",
+    "Input Parameters": "Graph Object constructed using each edge",
+    "Input": {
+        (0, 1): 7,
+        (0, 3): 8,
+        (1, 2): 6,
+        (1, 3): 3,
+        (2, 3): 4,
+        (2, 4): 2,
+        (2, 5): 5,
+        (3, 4): 3,
+        (4, 5): 2,
+    },
+    "Output": "Using Prim's Algorithm, we get MST having 17 weight of edges [(0, 1), (1, 3), (3, 4), (4, 2), (4, 5)]",
+}
+
 
 class Graph():
     def __init__(self):

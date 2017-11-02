@@ -1,7 +1,17 @@
-'''
-Implementation of a knapsack problem using dynamic programming.
-Input : List of (value, weight) tuple
-'''
+{
+    "Author": "Fenil Gandhi",
+    "Version": "Python 3.6.2",
+    "Description": "Implementation of a knapsack problem using dynamic programming",
+    "Input Parameters ": ["List of (value, weight) tuple", "Maximum Weight"],
+    "Input": [[(100, 10), (150, 20), (200, 30)], 50],
+    "Output":
+        """
+            Value       Weight      Quantity
+            200         30          1.0
+            150         20          1.0
+            Maximum Value possible with given weights is 350
+        """,
+}
 
 
 def KnapSack(input, max_weight):
@@ -12,13 +22,18 @@ def KnapSack(input, max_weight):
     input = sorted(input, reverse=True)
 
     total_value = 0
+    print("{0}\t\t{1}\t\t{2}".format("Value", "Weight", "Quantity"))
     while (max_weight > 0) and (len(input) > 0):
+
         # Select a node
         current_value, current_weight = input.pop(0)
 
         if (current_weight <= max_weight):
             total_value += current_value
             max_weight -= current_weight
+            print("{0}\t\t\t{1}\t\t\t1.0".format(current_value, current_weight))
+        else:
+            print("{0}\t\t\t{1}\t\t\t0.0".format(current_value, current_weight))
 
     return total_value
 

@@ -1,6 +1,11 @@
-'''
-Implementation of max-heap sort algorithm
-'''
+{
+    "Author": "Fenil Gandhi",
+    "Version": "Python 3.6.2",
+    "Description": "Implementation of max-heap sort algorithm",
+    "Input": [87, 30, 33, 61, 75, 16, 14, 7, 35],
+    "Output": [7, 14, 16, 30, 33, 35, 61, 75, 87],
+}
+
 
 def HeapSort(array):
     array_length = len(array)
@@ -9,7 +14,7 @@ def HeapSort(array):
     def swap_nodes(a, b):
         array[a], array[b] = array[b], array[a]
 
-    # Generate Heap using a recurrsive strategy
+    # Generate Heap using a recursive strategy
     def heapify(length, largest):
         new_largest = largest
         left_node = (2 * largest) + 1
@@ -28,9 +33,9 @@ def HeapSort(array):
             heapify(length, new_largest)
 
     # Make Initial Heap
-    for i in range(array_length-1, -1, -1):
+    for i in range(array_length - 1, -1, -1):
         heapify(array_length, i)
-    
+
     # Extract Last Element and Redo the process
     for i in range(array_length - 1, 0, -1):
         swap_nodes(i, 0)
@@ -38,17 +43,10 @@ def HeapSort(array):
 
     return array
 
+
 if __name__ == '__main__':
     array = [87, 30, 33, 61, 75, 16, 14, 7, 35]
-    print ("Array : ", array)
-    
+    print("Array : ", array)
+
     sorted_array = HeapSort(array)
     print("Sorted Array : ", sorted_array)
-
-
-'''
-Result :
-
-Array :  [87, 30, 33, 61, 75, 16, 14, 7, 35]
-Sorted Array :  [7, 14, 16, 30, 33, 35, 61, 75, 87]
-'''
