@@ -9,18 +9,16 @@
 
 
 def Making_Change_Problem(total_change, coins):
-
-    ways = [1] + [0] * total_change
-
+    ways = [[] for i in range(total_change+1)]
     for coin in coins:
-        for i in range(coin, total_change + 1):
-            ways[i] += ways[i - coin]
-
+        ways[coin] += [ [coin] ]
+        for i in range(coin+1, total_change + 1):
+            ways[i] += [ m + [coin] for m in ways[i-coin] ]
     return ways[total_change]
 
 
 if __name__ == '__main__':
     coins = [1, 2, 5, 10]
-    total_change = 100
+    total_change = 20
     possible_ways = Making_Change_Problem(total_change, coins)
-    print("Possible Changes for {0} using {1} coins are {2}".format(total_change, coins, possible_ways))
+    print("There are {3} Possible Changes for Rs.{0} using {1} coins are \n{2}".format(total_change, coins, "\n".join(map(str, possible_ways)) , len(possible_ways)))

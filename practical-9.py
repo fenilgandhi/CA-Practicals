@@ -28,7 +28,6 @@ def Graph_DFS(graph, start):
         if next_node not in path:
             path += [next_node]
             queue += graph[next_node][::-1]
-
     print("Depth First Traversal of graph gives {0} ".format(path))
 
 
@@ -46,15 +45,15 @@ def Graph_BFS(graph, start):
 
 if __name__ == '__main__':
     graph = {
-        '1': ['2', '3', '4'],
-        '2': ['5', '6'],
-        '3': [],
-        '4': ['7'],
-        '5': ['8', '9'],
-        '6': [],
-        '7': [],
-        '8': [],
-        '9': [],
+        1: [2, 3, 4],
+        2: [5, 6],
+        3: [],
+        4: [7],
+        5: [8, 9],
+        6: [],
+        7: [],
+        8: [],
+        9: [],
     }
-    Graph_DFS(graph, '1')
-    Graph_BFS(graph, '1')
+    Graph_DFS(graph, 1)
+    Graph_BFS(graph, 1)

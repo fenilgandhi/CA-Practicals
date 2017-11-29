@@ -9,6 +9,7 @@
             Value       Weight      Quantity
             200         30          1.0
             150         20          1.0
+            100         10          0.0
             Maximum Value possible with given weights is 350
         """,
 }
@@ -23,7 +24,7 @@ def KnapSack(input, max_weight):
 
     total_value = 0
     print("{0}\t\t{1}\t\t{2}".format("Value", "Weight", "Quantity"))
-    while (max_weight > 0) and (len(input) > 0):
+    while (len(input) > 0):
 
         # Select a node
         current_value, current_weight = input.pop(0)
@@ -31,9 +32,11 @@ def KnapSack(input, max_weight):
         if (current_weight <= max_weight):
             total_value += current_value
             max_weight -= current_weight
-            print("{0}\t\t\t{1}\t\t\t1.0".format(current_value, current_weight))
+            print("{0}\t\t{1}\t\t1.0".format(
+                current_value, current_weight))
         else:
-            print("{0}\t\t\t{1}\t\t\t0.0".format(current_value, current_weight))
+            print("{0}\t\t{1}\t\t0.0".format(
+                current_value, current_weight))
 
     return total_value
 

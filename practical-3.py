@@ -6,6 +6,7 @@
     "Output": [7, 14, 16, 30, 33, 35, 61, 75, 87],
 }
 
+import random 
 
 def HeapSort(array):
     array_length = len(array)
@@ -45,8 +46,9 @@ def HeapSort(array):
 
 
 if __name__ == '__main__':
-    array = [87, 30, 33, 61, 75, 16, 14, 7, 35]
+    # Generate random array of 100 integers
+    array = [random.randint(0,10000) for _ in range(100)]
     print("Array : ", array)
 
     sorted_array = HeapSort(array)
-    print("Sorted Array : ", sorted_array)
+    print("\nSorted Array : ", sorted_array)

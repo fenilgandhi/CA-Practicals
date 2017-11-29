@@ -29,7 +29,7 @@ def LCS(x, y):
             subsequence += y[j]
         prev = solution[:]
 
-    print("The Longest Common Subsequence between \"{0}\" and \"{1}\" is {2} of {3} characters".format(x, y, subsequence, solution[-1]))
+    print("The Longest Common Subsequence between \"{0}\" and \"{1}\" is \"{2}\" of {3} characters".format(x, y, subsequence, solution[-1]))
 
 
 if __name__ == '__main__':

@@ -31,11 +31,11 @@ def KnapSack(input, max_weight):
         if (current_weight <= max_weight):
             total_value += current_value
             max_weight -= current_weight
-            print("{0}\t\t\t{1}\t\t\t1.0".format(current_value, current_weight))
+            print("{0}\t\t{1}\t\t1.0".format(current_value, current_weight))
         else:
             partial_value = (current_value / current_weight) * max_weight
             total_value += partial_value
-            print("{0}\t\t\t{1}\t\t\t{2}".format(current_value, current_weight, round(max_weight / current_weight, 3), max_weight))
+            print("{0}\t\t{1}\t\t{2}".format(current_value, current_weight, round(max_weight / current_weight, 3), max_weight))
             max_weight = 0
     while (len(input) > 0):
         current_value, current_weight = input.pop(0)
