@@ -3,7 +3,7 @@
     "Version": "Python 3.6.2",
     "Description": "Implementation and Time analysis of sorting algorithms",
     "Algorithms": ["Bubble Sort", "Selection Sort", "Merge Sort", "Insertion Sort", "Quick Sort"],
-    "Input Sizes": [10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000],
+    "Input Sizes": [10, 50, 100, 500, 1000, 5000, 10000, 25000],
     "Output" : {
         "Bubble Sort" : "",
         "Selection Sort" : "",
@@ -26,15 +26,15 @@ def timeit(func):
     return decorated_function
 
 
-def sorted_array(size):
+def generate_sorted_array(size):
     return [i for i in range(size)]
 
 
-def reverse_sorted_array(size):
+def generate_reverse_sorted_array(size):
     return [i for i in range(size, 0, -1)]
 
 
-def random_sorted_array(size):
+def generate_random_array(size):
     return [random.randint(0, size) for i in range(size)]
 
 
@@ -125,74 +125,74 @@ def QuickSort(array):
     return array
 
 
-def print_formatted(name, input_sizes, best_case_time, average_case_time, worst_case_time):
+def print_formatted(name, input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time):
     print(" " * 60, "{0:^50s}".format(name), "-" * 55, sep="\n")
-    print("| {0:^10s} | {1:^10s} | {2:^10s} | {3:^10s} |".format("Input", "Best", "Worst", "Average"))
+    print("| {0:^10s} | {1:^10s} | {2:^10s} | {3:^10s} |".format("Input", "Sorted", "R-Sorted", "Random"))
     print("-" * 55)
     for i in range(len(input_sizes)):
-        print("| {0:>10d} | {1:>10f} | {2:>10f} | {3:>10f} |" .format(input_sizes[i], best_case_time[i], average_case_time[i], worst_case_time[i]))
+        print("| {0:>10d} | {1:>10f} | {2:>10f} | {3:>10f} |" .format(input_sizes[i], sorted_array_time[i], random_sorted_time[i], reverse_sorted_time[i]))
     print("-" * 55, end="\n\n")
 
 
 if __name__ == '__main__':
-    input_sizes = [10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000]
+    input_sizes = [10, 50, 100, 500, 1000, 5000, 10000, 25000]
 
     # Insertion Sort
-    best_case_time, average_case_time, worst_case_time = [], [], []
+    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
     for each_input in input_sizes:
-        best_case = sorted_array(each_input)
-        worst_case = reverse_sorted_array(each_input)
-        average_case = random_sorted_array(each_input)
+        sorted_array = generate_sorted_array(each_input)
+        reverse_sorted = generate_reverse_sorted_array(each_input)
+        random_sorted = generate_random_array(each_input)
 
-        best_case_time.append(InsertionSort(best_case))
-        worst_case_time.append(InsertionSort(worst_case))
-        average_case_time.append(InsertionSort(average_case))
-    print_formatted("Insertion Sort", input_sizes, best_case_time, average_case_time, worst_case_time)
+        sorted_array_time.append(InsertionSort(sorted_array))
+        reverse_sorted_time.append(InsertionSort(reverse_sorted))
+        random_sorted_time.append(InsertionSort(random_sorted))
+    print_formatted("Insertion Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
 
     # Selection Sort
-    best_case_time, average_case_time, worst_case_time = [], [], []
+    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
     for each_input in input_sizes:
-        best_case = sorted_array(each_input)
-        worst_case = reverse_sorted_array(each_input)
-        average_case = random_sorted_array(each_input)
+        sorted_array = generate_sorted_array(each_input)
+        reverse_sorted = generate_reverse_sorted_array(each_input)
+        random_sorted = generate_random_array(each_input)
 
-        best_case_time.append(SelectionSort(best_case))
-        worst_case_time.append(SelectionSort(worst_case))
-        average_case_time.append(SelectionSort(average_case))
-    print_formatted("Selection Sort", input_sizes, best_case_time, average_case_time, worst_case_time)
+        sorted_array_time.append(SelectionSort(sorted_array))
+        reverse_sorted_time.append(SelectionSort(reverse_sorted))
+        random_sorted_time.append(SelectionSort(random_sorted))
+    print_formatted("Selection Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
 
     # Quick Sort
-    best_case_time, average_case_time, worst_case_time = [], [], []
+    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
     for each_input in input_sizes:
-        best_case = sorted_array(each_input)
-        worst_case = reverse_sorted_array(each_input)
-        average_case = random_sorted_array(each_input)
+        sorted_array = generate_sorted_array(each_input)
+        reverse_sorted = generate_reverse_sorted_array(each_input)
+        random_sorted = generate_random_array(each_input)
 
-        best_case_time.append(QuickSort(best_case))
-        worst_case_time.append(QuickSort(worst_case))
-        average_case_time.append(QuickSort(average_case))
-    print_formatted("Quick Sort", input_sizes, best_case_time, average_case_time, worst_case_time)
+        sorted_array_time.append(QuickSort(sorted_array))
+        reverse_sorted_time.append(QuickSort(reverse_sorted))
+        random_sorted_time.append(QuickSort(random_sorted))
+    print_formatted("Quick Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
 
     # Merge Sort
-    best_case_time, average_case_time, worst_case_time = [], [], []
+    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
     for each_input in input_sizes:
-        best_case = sorted_array(each_input)
-        worst_case = reverse_sorted_array(each_input)
-        average_case = random_sorted_array(each_input)
+        sorted_array = generate_sorted_array(each_input)
+        reverse_sorted = generate_reverse_sorted_array(each_input)
+        random_sorted = generate_random_array(each_input)
 
-        best_case_time.append(MergeSort(best_case))
-        worst_case_time.append(MergeSort(worst_case))
-        average_case_time.append(MergeSort(average_case))
-    print_formatted("Merge Sort", input_sizes, best_case_time, average_case_time, worst_case_time)
+        sorted_array_time.append(MergeSort(sorted_array))
+        reverse_sorted_time.append(MergeSort(reverse_sorted))
+        random_sorted_time.append(MergeSort(random_sorted))
+    print_formatted("Merge Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
 
     # Bubble Sort
-    best_case_time, average_case_time, worst_case_time = [], [], []
+    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
     for each_input in input_sizes:
-        best_case = sorted_array(each_input)
-        worst_case = reverse_sorted_array(each_input)
-        average_case = random_sorted_array(each_input)
+        sorted_array = generate_sorted_array(each_input)
+        reverse_sorted = generate_reverse_sorted_array(each_input)
+        random_sorted = generate_random_array(each_input)
 
-        best_case_time.append(BubbleSort(best_case))
-        worst_case_time.append(BubbleSort(worst_case))
-        average_case_time.append(BubbleSort(average_case))
-    print_formatted("Bubble Sort", input_sizes, best_case_time, average_case_time, worst_case_time)
+        sorted_array_time.append(BubbleSort(sorted_array))
+        reverse_sorted_time.append(BubbleSort(reverse_sorted))
+        random_sorted_time.append(BubbleSort(random_sorted))
+    print_formatted("Bubble Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
