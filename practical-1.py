@@ -1,6 +1,4 @@
-import random
-import time
-
+"""
 {
     "Author": "Fenil Gandhi",
     "Version": "Python 3.6.2",
@@ -15,20 +13,25 @@ import time
         "Quick Sort" : "",
     }
 }
+"""
+
+import random
+import time
+
 
 
 class Input(object):
     def __init__(self, max_input_size=25000):
-        self.array = list(range(max_input_size))
+        self.max_input_size = max_input_size
 
     def get_sorted(self, n):
-        return self.array[:n]
+        return list(range(n))
 
     def get_sorted_reverse(self, n):
-        return self.array[-n:-1]
+        return list(range(n,1,-1))
 
     def get_random(self, n):
-        array = self.array[:n]
+        array = list(range(n))
         random.shuffle(array)
         return array
 
