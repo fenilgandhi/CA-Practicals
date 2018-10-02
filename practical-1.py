@@ -1,3 +1,6 @@
+import random
+import time
+
 {
     "Author": "Fenil Gandhi",
     "Version": "Python 3.6.2",
@@ -13,8 +16,21 @@
     }
 }
 
-import random
-import time
+
+class Input(object):
+    def __init__(self, max_input_size=25000):
+        self.array = list(range(max_input_size))
+
+    def get_sorted(self, n):
+        return self.array[:n]
+
+    def get_sorted_reverse(self, n):
+        return self.array[-n:-1]
+
+    def get_random(self, n):
+        array = self.array[:n]
+        random.shuffle(array)
+        return array
 
 
 def timeit(func):
@@ -136,63 +152,13 @@ def print_formatted(name, input_sizes, sorted_array_time, random_sorted_time, re
 
 if __name__ == '__main__':
     input_sizes = [10, 50, 100, 500, 1000, 5000, 10000, 25000]
+    input_generator = Input()
+    sorting_algorithms = ["InsertionSort", "SelectionSort", "QuickSort", "MergeSort", "BubbleSort"]
 
-    # Insertion Sort
-    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
-    for each_input in input_sizes:
-        sorted_array = generate_sorted_array(each_input)
-        reverse_sorted = generate_reverse_sorted_array(each_input)
-        random_sorted = generate_random_array(each_input)
-
-        sorted_array_time.append(InsertionSort(sorted_array))
-        reverse_sorted_time.append(InsertionSort(reverse_sorted))
-        random_sorted_time.append(InsertionSort(random_sorted))
-    print_formatted("Insertion Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
-
-    # Selection Sort
-    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
-    for each_input in input_sizes:
-        sorted_array = generate_sorted_array(each_input)
-        reverse_sorted = generate_reverse_sorted_array(each_input)
-        random_sorted = generate_random_array(each_input)
-
-        sorted_array_time.append(SelectionSort(sorted_array))
-        reverse_sorted_time.append(SelectionSort(reverse_sorted))
-        random_sorted_time.append(SelectionSort(random_sorted))
-    print_formatted("Selection Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
-
-    # Quick Sort
-    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
-    for each_input in input_sizes:
-        sorted_array = generate_sorted_array(each_input)
-        reverse_sorted = generate_reverse_sorted_array(each_input)
-        random_sorted = generate_random_array(each_input)
-
-        sorted_array_time.append(QuickSort(sorted_array))
-        reverse_sorted_time.append(QuickSort(reverse_sorted))
-        random_sorted_time.append(QuickSort(random_sorted))
-    print_formatted("Quick Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
-
-    # Merge Sort
-    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
-    for each_input in input_sizes:
-        sorted_array = generate_sorted_array(each_input)
-        reverse_sorted = generate_reverse_sorted_array(each_input)
-        random_sorted = generate_random_array(each_input)
-
-        sorted_array_time.append(MergeSort(sorted_array))
-        reverse_sorted_time.append(MergeSort(reverse_sorted))
-        random_sorted_time.append(MergeSort(random_sorted))
-    print_formatted("Merge Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
-
-    # Bubble Sort
-    sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
-    for each_input in input_sizes:
-        sorted_array = generate_sorted_array(each_input)
-        reverse_sorted = generate_reverse_sorted_array(each_input)
-        random_sorted = generate_random_array(each_input)
-
-        sorted_array_time.append(BubbleSort(sorted_array))
-        reverse_sorted_time.append(BubbleSort(reverse_sorted))
-        random_sorted_time.append(BubbleSort(random_sorted))
-    print_formatted("Bubble Sort", input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
+    for algorithm in sorting_algorithms:
+        sorted_array_time, random_sorted_time, reverse_sorted_time = [], [], []
+        for each_input in input_sizes:
+            sorted_array_time.append(globals()[algorithm](input_generator.get_sorted(each_input)))
+            reverse_sorted_time.append(globals()[algorithm](input_generator.get_sorted_reverse(each_input)))
+            random_sorted_time.append(globals()[algorithm](input_generator.get_random(each_input)))
+        print_formatted(algorithm, input_sizes, sorted_array_time, random_sorted_time, reverse_sorted_time)
